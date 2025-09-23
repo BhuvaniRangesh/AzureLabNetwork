@@ -1,0 +1,34 @@
+# --- SSH into On-Prem VM ---
+ssh azureuser@20.106.208.29
+# password: labuser1995!
+
+# --- Test connectivity to Hub VM (subnet-inspect) ---
+ping 10.0.2.4
+
+# --- Test HTTP service on Hub VM ---
+curl -I http://10.0.2.4
+
+# --- Test local subnet traffic (Hub VM itself) ---
+curl -I http://127.0.0.1
+
+# --- Test access to Azure Storage (bypass route) ---
+curl -I https://<yourstorageaccount>.blob.core.windows.net
+
+# --- Test Internet connectivity ---
+curl -I https://www.google.com
+
+# --- View effective routes on Hub VM (Linux) ---
+ip route
+
+# --- Azure CLI: show route table ---
+az network route-table show --name rtb-inspect --resource-group rg-network-lab
+
+# --- Azure CLI: view NSG for subnet-inspect ---
+az network nsg show --name nsg-subnet-inspect --resource-group rg-network-lab
+
+# --- Azure CLI: list VNets in resource group ---
+az network vnet list --resource-group rg-network-lab -o table
+
+# --- Azure CLI: check VPN gateway connection ---
+az network vpn-connection list --resource-group rg-network-lab -o table
+
