@@ -31,7 +31,3 @@
    - Test Internet: `curl -I https://www.google.com`
 7. Verified Spoke route blocked (if Spoke VNet existed)
 
-## Notes
-- Free account limitation: No separate NVA or Spoke VM created.
-- Hub VM acts as “fake NVA” for routing purposes.
-- Lab demonstrates routing, peering, NSG rules, and outbound inspection logic.
